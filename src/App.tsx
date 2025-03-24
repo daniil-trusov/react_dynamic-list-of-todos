@@ -84,11 +84,10 @@ export const App: React.FC = () => {
             </div>
 
             <div className="block">
-              {isLoading && !errorMessage ? (
-                <Loader />
-              ) : (
-                !errorMessage &&
-                visibleTodos.length > 0 && (
+              {!errorMessage &&
+                (isLoading ? (
+                  <Loader />
+                ) : (
                   <TodoList
                     todos={visibleTodos}
                     selectedTodo={selectedTodo}
@@ -96,8 +95,7 @@ export const App: React.FC = () => {
                       handleSelectTodo(todo);
                     }}
                   />
-                )
-              )}
+                ))}
               {errorMessage && <p>{errorMessage}</p>}
             </div>
           </div>
