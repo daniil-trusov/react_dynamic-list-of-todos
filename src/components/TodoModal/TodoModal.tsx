@@ -25,7 +25,7 @@ export const TodoModal: React.FC<Props> = ({ todo, onClose }) => {
         setErrorMessage(`Error: can't load user with id ${todo.userId}`),
       )
       .finally(() => setIsLoading(false));
-  }, []);
+  }, [todo.userId]);
 
   return (
     <div className="modal is-active" data-cy="modal">

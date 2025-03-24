@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { useEffect, useState } from 'react';
+import React, { useMemo, useEffect, useState } from 'react';
 import 'bulma/css/bulma.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 
@@ -60,11 +60,12 @@ export const App: React.FC = () => {
       .finally(() => setIsLoading(false));
   }, []);
 
-  const visibleTodos = PrepareTodos(todosFromServer, filterBy, searchQuery);
+  const visibleTodos = useMemo(
+    () => PrepareTodos(todosFromServer, filterBy, searchQuery),
+    [todosFromServer, filterBy, searchQuery],
+  );
 
-  const handleSelectTodo = (todo: Todo) => {
-    setSelectedTodo(todo);
-  };
+  const handleSelectTodo = (todo: Todo) => setSelectedTodo(todo);
 
   return (
     <>
