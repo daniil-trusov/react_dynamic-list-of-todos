@@ -34,7 +34,7 @@ export const TodoList: React.FC<Props> = React.memo(
               className={cn({
                 'has-background-info-light': isSelected,
               })}
-              key={`${todo.id}-${todo.title}`}
+              key={todo.id}
             >
               <td className="is-vcentered">{todo.id}</td>
               <td className="is-vcentered">
@@ -73,7 +73,6 @@ export const TodoList: React.FC<Props> = React.memo(
       </tbody>
     </table>
   ),
-  (prevProps: Props, nextProps: Props) => prevProps === nextProps,
 );
 
 TodoList.displayName = 'TodoList';
